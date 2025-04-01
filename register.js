@@ -1,31 +1,36 @@
-document.getElementById('occupation').addEventListener('change', function() {
-  const additionalInput = document.getElementById('additionalInput');
-  additionalInput.innerHTML = '';
-
-  if (this.value === 'student') {
-    additionalInput.innerHTML = `
-      <label for="institution">Institution Name</label>
-      <input type="text" id="institution" required />
-    `;
-  } else if (this.value === 'professional') {
-    additionalInput.innerHTML = `
-      <label for="profession">Profession</label>
-      <input type="text" id="profession" required />
-    `;
+function toggleAlumniFields() {
+  const role = document.getElementById("role").value;
+  const alumniFields = document.getElementById("alumniFields");
+  if (role === "alumni") {
+    alumniFields.style.display = "block";
+  } else {
+    alumniFields.style.display = "none";
   }
-});
+}
 
 document.getElementById('accountForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
-    const name = document.getElementById('name').value;
+    const username = document.getElementById('username').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    const gender = document.getElementById('gender').value;
-    const phone = document.getElementById('phone').value;
-    const occupation = document.getElementById('occupation').value;
+    const role = document.getElementById('role').value;
 
-    const data = { name, email, password, phone, gender, occupation };
+    let graduationYear = null;
+    let currentCompany = null;
+    let jobTitle = null;
+    let bio = null;
+    let linkedin = null;
+
+    if (role === 'alumni') {
+        graduationYear = document.getElementById('graduationYear').value;
+        currentCompany = document.getElementById('currentCompany').value;
+        jobTitle = document.getElementById('jobTitle').value;
+        bio = document.getElementById('bio').value;
+        linkedin = document.getElementById('linkedin').value;
+    }
+
+    const data = { username, email, password, confirmPassword, role, graduationYear, currentCompany, jobTitle, bio, linkedin };
 
     try {
       const response = await fetch('http://127.0.0.1:8000/users/register/', {
@@ -35,8 +40,8 @@ document.getElementById('accountForm').addEventListener('submit', async function
       });
 
       if (response.ok) {
-        const name = document.getElementById('name').value;
-        const queryParams = `name=${encodeURIComponent(name)}`;
+        const username = document.getElementById('username').value;
+        const queryParams = `username=${encodeURIComponent(username)}`;
         alert('Account created successfully!');
         window.location.href = `dashboard.html?${queryParams}`;
         

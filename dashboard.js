@@ -14,7 +14,8 @@ function getQueryName(param) {
   return params.get(param);
 }
 
-const userName = getQueryName('name');
+const userName = getQueryName('username');
+console.log(userName);
 
 if (userName) {
   const initials = userName.split(' ').map(word => word[0]).join('').toUpperCase();
