@@ -1,0 +1,80 @@
+body{
+    margin: 0;
+}
+h1{
+    margin-left: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+  }
+.buttons button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #39414b;
+    color: white;
+}
+
+
+main {
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+    background-color: #9ec2a5;
+    min-height: 73vh;
+}
+
+.heading {
+    font-size: 28px;
+}
+
+p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+
+
+.user-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+
+    position:relative;
+    right:30px;
+    top:20px;
+    
+  }
+
+  .logout {
+
+    color: black;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+
+    position:relative;
+    bottom: 20px;
+    left:5px;
+
+  }
+
+  .logout:hover {
+    opacity: 0.7;
+
+    
+  }
